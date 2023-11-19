@@ -1,1 +1,1 @@
-A "Pythonic" set of cards.
+"Pythonic" Cards
