@@ -69,6 +69,11 @@ class Shoe:
         return f"A Shoe containing {self.deck_total} Decks."
 
 
-shoe = Shoe()
-shoe.decks[0].shuffle_deck()
-shoe.decks[0].print_deck()
+# initialise 2 deck shoe and print the cards inside and card totals
+shoe = Shoe(2)
+for deck in shoe.decks:
+    deck.shuffle_deck()
+print(shoe)
+for deck in shoe.decks:
+    deck.print_deck()
+    print(len(deck.cards))
