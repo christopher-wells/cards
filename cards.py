@@ -47,7 +47,7 @@ class Deck:
         """Shuffle this Deck."""
         shuffle(self.cards)
         return self.cards
-
+    
     def print_deck(self) -> None:
         "Print this Deck in list order."
         for card in self.cards:
@@ -64,16 +64,29 @@ class Shoe:
         else:
             self.deck_total = deck_total
         self.decks = [Deck() for deck in range(self.deck_total)]
+        self.cards = []
 
     def __str__(self) -> str:
         return f"A Shoe containing {self.deck_total} Decks."
+    
+    def insert_decks_into_shoe(self) -> None:
+        for i in range(len(self.decks)):
+            for card in zip(self.decks[i].cards):
+                self.cards.append(card[0])
+    
+    def shuffle_decks(self) -> list:
+        """Shuffle Decks in this Shoe."""
+        shuffle(self.cards)
+        return self.cards
+    
+    def print_decks(self) -> None:
+        "Print the Cards in this Shoe in list order."
+        for card in self.cards:
+            print(card)
 
 
 # initialise 2 deck shoe and print the cards inside and card totals
-shoe = Shoe(2)
-for deck in shoe.decks:
-    deck.shuffle_deck()
-print(shoe)
-for deck in shoe.decks:
-    deck.print_deck()
-    print(len(deck.cards))
+shoe = Shoe(6)
+shoe.insert_decks_into_shoe()
+shoe.shuffle_decks()
+shoe.print_decks()
