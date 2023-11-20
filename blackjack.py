@@ -8,9 +8,9 @@ class Game:
     can be up to 3 Players on each Box. The Game will start with the active
     Boxes being dealt 1 Card each. The Dealer will be dealt 1 Card.
 
-    The Players will be dealt a second Card and depending on the variation: -
-    (EU) The Dealer will not be dealt a second Card. - (US) The Dealer will be
-    dealt a second Card that will not be shown.
+    The Players will be dealt a second Card and depending on the variation:
+    - (EU) The Dealer will not be dealt a second Card. 
+    - (US) The Dealer will be dealt a second Card that will not be shown.
 
     The Player that is in charge of the first Box will then decide on an action:
     - They can stand at any time, in which no more Cards will be added to the
@@ -94,8 +94,7 @@ class Box:
 
 
 class Wager:
-    """A wager is a bet. An integer amount that will be taken from the Players
-    balance.
+    """A wager is an amount that will be taken from the Players balance.
     There will be a maximum of 3 wagers per box."""
 
     self.total = 0
