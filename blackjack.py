@@ -4,15 +4,15 @@ from cards import Card, Deck, Shoe
 
 class BlackjackGame:
     """
-    The BlackjackGame will follow a pre-defined set of rules.
+    BlackjackGame will follow a pre-defined set of rules.
 
     The Players can place wagers on any number of Boxes, up to 7 in total. There
     can be up to 3 Players on each Box. The Game will start with the active
     Boxes being dealt 1 Card each. The Dealer will be dealt 1 Card.
 
-    The Players will be dealt a second Card and depending on the variation: -
-    (EU) The Dealer will not be dealt a second Card. - (US) The Dealer will be
-    dealt a second Card that will not be shown.
+    The Players will be dealt a second Card and depending on the variation:
+    - (EU) The Dealer will not be dealt a second Card.
+    - (US) The Dealer will be dealt a second Card that will not be shown.
 
     The Player that is in charge of the first Box will then decide on an action:
     - They can stand at any time, in which no more Cards will be added to the

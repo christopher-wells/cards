@@ -89,3 +89,8 @@ class Shoe:
         # print the Cards in this Shoe in list order
         for card in self.cards:
             print(card)
+    
+    def deal_card_from_shoe(self, hand):
+        # add the Card to the Hand and then remove from Deck
+        hand.cards.append(self.cards[0])
+        self.cards.pop(0)
