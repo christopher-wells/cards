@@ -1,16 +1,17 @@
+from casino import Player, Dealer, Box, Wager, Hand
 from cards import Card, Deck, Shoe
 
 
-class Game:
-    """The Game will follow a pre-defined set of rules.
+class BlackjackGame:
+    """The BlackjackGame will follow a pre-defined set of rules.
 
     The Players can place wagers on any number of Boxes, up to 7 in total. There
     can be up to 3 Players on each Box. The Game will start with the active
     Boxes being dealt 1 Card each. The Dealer will be dealt 1 Card.
 
-    The Players will be dealt a second Card and depending on the variation:
-    - (EU) The Dealer will not be dealt a second Card. 
-    - (US) The Dealer will be dealt a second Card that will not be shown.
+    The Players will be dealt a second Card and depending on the variation: -
+    (EU) The Dealer will not be dealt a second Card. - (US) The Dealer will be
+    dealt a second Card that will not be shown.
 
     The Player that is in charge of the first Box will then decide on an action:
     - They can stand at any time, in which no more Cards will be added to the
@@ -40,8 +41,8 @@ class Game:
       moves on to the next hand. The dealer action is pre-defined and will not
       deviate from those rules.
     - The dealer will first check the hand in case of Blackjack.
-    - Assuming there is no Blackjack, the Dealer will continue to draw/add
-      Cards to their hand until a total of at least 17 is reached.
+    - Assuming there is no Blackjack, the Dealer will continue to draw/add Cards
+      to their hand until a total of at least 17 is reached.
     - If the hand goes over 21 then the Dealers hand is void/bust and all
       remaining Boxes will recieve 1x their wager.
     - Exceptions to this are where there are boxes with double-down wagers. In
@@ -67,46 +68,3 @@ class Game:
         self.player = Player()
         self.dealer = Dealer()
         self.first_box = Box()
-
-
-class Hand:
-    """A Hand consists of a number of Cards. The total of the Hand can not be
-    more than 21 or the Hand becomes void/bust."""
-
-    def __init__(self) -> None:
-        self.cards = []
-        self.total = 0
-
-    def calculate_hand_total(self, cards) -> int:
-        self.total = 0
-        for card in self.cards:
-            self.total += card.value
-        return self.total
-
-
-class Box:
-    """A Box consists of a number of Wagers (Up to 3) and a Hand of Cards."""
-
-    def __init__(self) -> None:
-        self.wagers = []
-        self.action = False
-        self.hand = None
-
-
-class Wager:
-    """A wager is an amount that will be taken from the Players balance.
-    There will be a maximum of 3 wagers per box."""
-
-    self.total = 0
-
-
-class Player:
-    def __init__(self) -> None:
-        self.balance = 1000
-        self.active_wagers = []
-        self.previous_wager = 0
-
-
-class Dealer:
-    def __init__(self) -> None:
-        self.balance = 100000000
