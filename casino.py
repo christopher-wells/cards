@@ -1,6 +1,7 @@
 class Hand:
-    """A Hand consists of a number of Cards. The total of the Hand can not be
-    more than 21 or the Hand becomes void/bust."""
+    """
+    A Hand consists of a number of Cards. The cards can have a total.
+    """
 
     def __init__(self) -> None:
         self.cards = []
@@ -14,21 +15,25 @@ class Hand:
 
 
 class Box:
-    """A box is a position in a Game that contains wagers.
-    In most games the maximum amount of wagers will be limited per box."""
+    """
+    A box is a position in a Game that contains wagers. In most games the
+    maximum amount of wagers will be limited per box.
+    """
 
     def __init__(self, max_wagers=0) -> None:
         self.max_wagers = max_wagers
         self.wagers = []
+        self.active = False
         self.action = False
         self.hand = None
 
 
 class Wager:
-    """A wager is an amount that will be taken from the Players balance and
-     used in a Box to play a Game.
-    There can be a maximum bet amount that limits the amount placed in a
-     wager."""
+    """
+    A wager is an amount that will be taken from the Players balance and used in
+    a Box to play a Game. There can be a maximum bet amount that limits the
+    amount placed in a wager.
+    """
 
     def __init__(self) -> None:
         self.total = 0
@@ -36,10 +41,15 @@ class Wager:
 
 
 class Player:
-    def __init__(self) -> None:
+    def __init__(self, name) -> None:
+        self.name = name
         self.balance = 1000
         self.active_wagers = []
         self.previous_wager = 0
+    
+    def __str__(self) -> str:
+        return f"{self.name} has £{self.balance} left."
+        
 
 
 class Dealer:

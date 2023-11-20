@@ -2,7 +2,9 @@ from random import shuffle
 
 
 class Card:
-    """A single Card."""
+    """
+    A single Card.
+    """
 
     def __init__(self, suit, name, value) -> None:
         self.suit = suit
@@ -14,7 +16,9 @@ class Card:
 
 
 class Deck:
-    """A Deck of Cards."""
+    """
+    A Deck of Cards.
+    """
 
     def __init__(self) -> None:
         self.suits = ("♥", "♣", "♦", "♠")
@@ -44,19 +48,21 @@ class Deck:
         return f"A Deck of Cards."
 
     def shuffle_deck(self) -> list:
-        """Shuffle this Deck."""
+        # shuffle this Deck
         shuffle(self.cards)
         return self.cards
 
     def print_deck(self) -> None:
-        "Print this Deck in list order."
+        # print this Deck in list order
         for card in self.cards:
             print(card)
 
 
 class Shoe:
-    """A Shoe class that contains one or more Decks.
-    A Shoe is an object in a casino from which the cards are dealt."""
+    """
+    A Shoe class that contains one or more Decks. A Shoe is an object in a
+    casino from which the cards are dealt.
+    """
 
     def __init__(self, deck_total=1) -> None:
         if deck_total < 1:
@@ -76,10 +82,10 @@ class Shoe:
         return f"A Shoe containing {self.deck_total} Decks."
 
     def shuffle_cards(self) -> None:
-        """Shuffle Cards in this Shoe."""
+        # shuffle Cards in this Shoe
         shuffle(self.cards)
 
     def print_decks(self) -> None:
-        "Print the Cards in this Shoe in list order."
+        # print the Cards in this Shoe in list order
         for card in self.cards:
             print(card)

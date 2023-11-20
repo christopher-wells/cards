@@ -3,7 +3,8 @@ from cards import Card, Deck, Shoe
 
 
 class BlackjackGame:
-    """The BlackjackGame will follow a pre-defined set of rules.
+    """
+    The BlackjackGame will follow a pre-defined set of rules.
 
     The Players can place wagers on any number of Boxes, up to 7 in total. There
     can be up to 3 Players on each Box. The Game will start with the active
@@ -55,9 +56,10 @@ class BlackjackGame:
 
     Once all wagers have been settled, the game will begin again.
 
-    Ace Card rules: - If either the Player or Dealer has an Ace in their Hand
-    then the total will be counted as 1 or 11 depending on the total of the
-    Hand.
+    Ace Card rules: 
+    - If either the Player or Dealer has an Ace in their Hand then the total
+      will be counted as 1 or 11 depending on the total of the
+      Hand.
         - If the total is 10 or less, the Ace can be counted as either 1 or 11.
         - If the total is greater than 10 then the Ace will always be counted as
           1, as to not void/bust the hand.
