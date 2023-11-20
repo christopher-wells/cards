@@ -85,7 +85,7 @@ class Shoe:
             print(card)
 
 
-# initialise 2 deck shoe and print the cards inside and card totals
+# initialise 6 deck shoe, shuffle and print cards in order.
 shoe = Shoe(6)
 shoe.insert_decks_into_shoe()
 shoe.shuffle_decks()
