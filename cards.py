@@ -10,28 +10,28 @@ class Card:
         self.value = value
 
     def __str__(self) -> str:
-        return f"The {self.name} of {self.suit} - {self.value}."
+        return f"{self.name}{self.suit} - {self.value}."
 
 
 class Deck:
     """A Deck of Cards."""
 
     def __init__(self) -> None:
-        self.suits = ("Hearts", "Clubs", "Diamonds", "Spades")
+        self.suits = ("♥", "♣", "♦", "♠")
         self.names = (
-            "Ace",
-            "Two",
-            "Three",
-            "Four",
-            "Five",
-            "Six",
-            "Seven",
-            "Eight",
-            "Nine",
-            "Ten",
-            "Jack",
-            "Queen",
-            "King",
+            "A",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9",
+            "10",
+            "J",
+            "Q",
+            "K",
         )
         self.values = ((1, 11), 2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 10)
         self.cards = []
@@ -47,7 +47,7 @@ class Deck:
         """Shuffle this Deck."""
         shuffle(self.cards)
         return self.cards
-    
+
     def print_deck(self) -> None:
         "Print this Deck in list order."
         for card in self.cards:
@@ -65,28 +65,21 @@ class Shoe:
             self.deck_total = deck_total
         self.decks = [Deck() for deck in range(self.deck_total)]
         self.cards = []
-
-    def __str__(self) -> str:
-        return f"A Shoe containing {self.deck_total} Decks."
-    
-    def insert_decks_into_shoe(self) -> None:
+        # add Cards from Decks
         for i in range(len(self.decks)):
             for card in zip(self.decks[i].cards):
                 self.cards.append(card[0])
-    
-    def shuffle_decks(self) -> list:
-        """Shuffle Decks in this Shoe."""
+        # initial shuffle
         shuffle(self.cards)
-        return self.cards
-    
+
+    def __str__(self) -> str:
+        return f"A Shoe containing {self.deck_total} Decks."
+
+    def shuffle_cards(self) -> None:
+        """Shuffle Cards in this Shoe."""
+        shuffle(self.cards)
+
     def print_decks(self) -> None:
         "Print the Cards in this Shoe in list order."
         for card in self.cards:
             print(card)
-
-
-# initialise 6 deck shoe, shuffle and print cards in order.
-shoe = Shoe(6)
-shoe.insert_decks_into_shoe()
-shoe.shuffle_decks()
-shoe.print_decks()
