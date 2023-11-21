@@ -8,16 +8,15 @@ class BlackjackGame:
 
     The Players can place wagers on any number of Boxes, up to 7 in total. There
     can be up to 3 Players on each Box. The Game will start with the active
-    Boxes being dealt 1 Card each. The Dealer will be dealt 1 Card.
-
-    The Players will be dealt a second Card and depending on the variation:
+    Boxes being dealt 1 Card each. The Dealer will be dealt 1 Card. The Players
+    will be dealt a second Card and depending on the variation:
     - (EU) The Dealer will not be dealt a second Card.
     - (US) The Dealer will be dealt a second Card that will not be shown.
 
     The Player that is in charge of the first Box will then decide on an action:
     - They can stand at any time, in which no more Cards will be added to the
-    box total and that will be the end of their turn. - They can take another
-    Card in which the total will be added to their hand.
+    box total and that will be the end of their turn.
+    - They can take another Card in which the total will be added to their hand.
         - If the Box total is greater than 21, they void their hand and the Box
           forfeits all it's wagers.
     - They can double-down for up to 2x their original wager, they will recieve
