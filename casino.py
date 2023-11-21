@@ -26,6 +26,8 @@ class Box:
         self.max_bet = max_bet
 
         self.wagers = []
+        self.wager_count = 0
+        self.wager_total = 0
 
         self.active = False
         self.action = False
@@ -54,8 +56,12 @@ class Wager:
     a Box to play a Game.
     """
 
-    def __init__(self) -> None:
-        self.total = 0
+    def __init__(self, amount, owner) -> None:
+        if amount > 0:
+            self.amount = amount
+        else:
+            self.amount = 1
+        self.owner = owner
 
 
 class Player:

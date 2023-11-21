@@ -9,8 +9,7 @@ from cards import Card, Deck, Shoe
 class TestBlackjackGame(unittest.TestCase):
     def setUp(self):
         self.mock_shoe = MagicMock(spec=Shoe)
-        self.mock_shoe.shuffle_new_decks_into_shoe = MagicMock(
-            return_value=None)
+        self.mock_shoe.shuffle_new_decks_into_shoe = MagicMock(return_value=None)
         self.game = BlackjackGame(number_of_decks=1)
         self.game.number_of_decks = self.mock_shoe
 
