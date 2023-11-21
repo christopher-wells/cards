@@ -1,1 +1,1 @@
-"Pythonic" Cards
+A "pythonic" approach to card simulation in a casino environment.
