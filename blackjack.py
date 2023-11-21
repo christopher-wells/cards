@@ -56,7 +56,7 @@ class BlackjackGame:
 
     Once all wagers have been settled, the game will begin again.
 
-    Ace Card rules: 
+    Ace Card rules:
     - If either the Player or Dealer has an Ace in their Hand then the total
       will be counted as 1 or 11 depending on the total of the
       Hand.

@@ -22,21 +22,7 @@ class Deck:
 
     def __init__(self) -> None:
         self.suits = ("♥", "♣", "♦", "♠")
-        self.names = (
-            "A",
-            "2",
-            "3",
-            "4",
-            "5",
-            "6",
-            "7",
-            "8",
-            "9",
-            "10",
-            "J",
-            "Q",
-            "K",
-        )
+        self.names = ("A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K")
         self.values = ((1, 11), 2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 10)
         self.cards = []
         # create deck
@@ -69,14 +55,10 @@ class Shoe:
             self.deck_total = 1
         else:
             self.deck_total = deck_total
-        self.decks = [Deck() for deck in range(self.deck_total)]
-        self.cards = []
-        # add Cards from Decks
-        for i in range(len(self.decks)):
-            for card in zip(self.decks[i].cards):
-                self.cards.append(card[0])
-        # initial shuffle
-        shuffle(self.cards)
+        self.decks = None
+        self.cards = None
+        # card count for keeping track of when a new shuffle will take place
+        self.card_count = 0
 
     def __str__(self) -> str:
         return f"A Shoe containing {self.deck_total} Decks."
@@ -89,8 +71,19 @@ class Shoe:
         # print the Cards in this Shoe in list order
         for card in self.cards:
             print(card)
-    
+
     def deal_card_from_shoe(self, hand):
         # add the Card to the Hand and then remove from Deck
         hand.cards.append(self.cards[0])
         self.cards.pop(0)
+    
+    def shuffle_new_decks_into_shoe(self):
+        # generate new decks for deck_total
+        self.decks = [Deck() for deck in range(self.deck_total)]
+        self.cards = []
+        # add Cards from Decks
+        for i in range(len(self.decks)):
+            for card in zip(self.decks[i].cards):
+                self.cards.append(card[0])
+        # initial shuffle
+        self.shuffle_cards()

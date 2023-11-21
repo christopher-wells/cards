@@ -29,7 +29,7 @@ class Box:
         self.action = False
         self.hand = None
         self.invalid_bet = False
-    
+
     def calculate_if_max_bet_exceeded(self) -> bool:
         box_total = 0
         for wager in self.wagers:
@@ -39,7 +39,7 @@ class Box:
             return self.invalid_bet
         else:
             self.invalid_bet = False
-            return self.invalid_bet        
+            return self.invalid_bet
 
 
 class Wager:
@@ -58,9 +58,9 @@ class Player:
         self.balance = 1000
         self.active_wagers = []
         self.previous_wager = 0
-    
+
     def __str__(self) -> str:
-        return f"{self.name} has £{self.balance} left."  
+        return f"{self.name} has £{self.balance} left."
 
 
 class Dealer:
