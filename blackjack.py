@@ -38,9 +38,10 @@ class BlackjackGame:
           blackjack as to whether they will be paid or just keep their wager.
     - If a total of 21 is reached on any number of cards after the initial 2
       then the Player can no longer take any action on that Hand and the game
-      moves on to the next hand. The dealer action is pre-defined and will not
-      deviate from those rules.
-    - The dealer will first check the hand in case of Blackjack.
+      moves on to the next hand.
+      
+    The Dealer action is pre-defined and will not deviate from those rules.
+    - The Dealer will first check the hand in case of Blackjack.
     - Assuming there is no Blackjack, the Dealer will continue to draw/add Cards
       to their hand until a total of at least 17 is reached.
     - If the hand goes over 21 then the Dealers hand is void/bust and all
