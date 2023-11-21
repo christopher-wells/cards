@@ -7,7 +7,7 @@ class BlackjackGame:
     """
     BlackjackGame will follow a pre-defined set of rules.
 
-    The Players can place wagers on any number of Boxes, up to 7 in total. There can be up to 3 Players on each Box.
+    The Players can place wagers on any number of Boxes, up to 7 in total. There can be 1 Player on each Box.
     The Game will start with the active Boxes being dealt 1 Card each. The Dealer will be dealt 1 Card. The Players
     will be dealt a second Card, and depending on the variation:
     - (EU) The Dealer will not be dealt a second Card.
@@ -73,7 +73,7 @@ class BlackjackGame:
         self.dealer = Dealer()
 
         self.max_boxes = 7
-        self.max_wagers_per_box = 3
+        self.max_wagers_per_box = 1
         self.max_bet_per_box = 5000
 
         self.boxes = [
@@ -81,7 +81,12 @@ class BlackjackGame:
             for box in range(self.max_boxes)
         ]
 
-    def finalise_wager_to_box(self, player, amount, box_number, box_position):
+    def finalise_wager_to_box(self, player, amount, box_number):
+        # check if box is free first
+        if not self.boxes[box_number].active:
+            self.boxes[box_number].active = True
+        else:
+            raise InvalidBetError("The Box is currently taken.")
         # if there is a spot free and it doesn't exceed any limits, allow the wager
         for box in self.boxes:
             if (
