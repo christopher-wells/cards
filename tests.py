@@ -164,7 +164,7 @@ class TestBlackjackGame(unittest.TestCase):
                 self.assertEqual(len(box.hand.cards), 2)
             else:
                 # inactive boxes should not have cards
-                self.assertEqual(len(box.hand.cards), 0)
+                self.assertEqual(box.hand.cards, 0)
         # assuming the dealer receives one card initially
         self.assertEqual(len(self.game.dealer.active_hand.cards), 1)
 
