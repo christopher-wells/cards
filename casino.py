@@ -62,7 +62,7 @@ class Player:
     If auto_player then will follow one or more strategies to play Games.
     """
 
-    def __init__(self, name="Player", auto_player=False) -> None:
+    def __init__(self, name, auto_player=False) -> None:
         self.name = name
         self.balance = 10000
         self.auto_player = auto_player

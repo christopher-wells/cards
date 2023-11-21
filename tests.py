@@ -9,8 +9,8 @@ from error_handling import InvalidBetError
 
 import unittest
 
-class TestCard(unittest.TestCase):
 
+class TestCard(unittest.TestCase):
     def test_card_creation(self):
         card = Card("♥", "A", (1, 11))
         self.assertEqual(card.suit, "♥")
@@ -23,7 +23,6 @@ class TestCard(unittest.TestCase):
 
 
 class TestDeck(unittest.TestCase):
-
     def test_deck_creation(self):
         deck = Deck()
         self.assertEqual(len(deck.cards), 52)
@@ -40,6 +39,7 @@ class TestDeck(unittest.TestCase):
         # redirect standard output to capture printed content
         from io import StringIO
         import sys
+
         captured_output = StringIO()
         sys.stdout = captured_output
 
@@ -53,7 +53,6 @@ class TestDeck(unittest.TestCase):
 
 
 class TestShoe(unittest.TestCase):
-
     def test_shoe_creation_default_deck_total(self):
         shoe = Shoe()
         self.assertEqual(shoe.deck_total, 1)
@@ -150,6 +149,24 @@ class TestBlackjackGame(unittest.TestCase):
         # make wagers on multiple boxes
         for box_number in range(len(self.game.boxes)):
             self.game.try_wager_on_box(player, amount, box_number)
+
+    def test_initial_deal(self):
+        self.game.shoe.shuffle_new_decks_into_shoe()
+        # call the initial_deal method
+        self.game.initial_deal()
+
+        # check that the initial deal has been done as expected
+        # - check if each active box has one card
+        # - the dealer has one card
+        # - each active box has received a second card
+        for box in self.game.boxes:
+            if box.active:
+                self.assertEqual(len(box.hand.cards), 2)
+            else:
+                # inactive boxes should not have cards
+                self.assertEqual(len(box.hand.cards), 0)
+        # assuming the dealer receives one card initially
+        self.assertEqual(len(self.game.dealer.active_hand.cards), 1)
 
 
 if __name__ == "__main__":

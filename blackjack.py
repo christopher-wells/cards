@@ -68,7 +68,7 @@ class BlackjackGame:
     """
 
     def __init__(self, number_of_decks) -> None:
-        self.number_of_decks = Shoe(number_of_decks)
+        self.shoe = Shoe(number_of_decks)
         self.player = Player("Pope Gregory IX")
         self.dealer = Dealer()
 
@@ -98,8 +98,23 @@ class BlackjackGame:
             else:
                 raise InvalidBetError("The bet was invalid.")
 
-    def start_deal(self):
-        pass
+    def initial_deal(self):
+        # first card
+        for box in self.boxes:
+            if box.active:
+                box.hand = Hand()
+                self.shoe.deal_card_from_shoe(box.hand)
+            else:
+                # avoid None type in cards
+                box.hand = Hand()
+                box.hand.card = 0
+        # dealer card
+        self.dealer.active_hand = Hand()
+        self.shoe.deal_card_from_shoe(self.dealer.active_hand)
+        # second card
+        for box in self.boxes:
+            if box.active:
+                self.shoe.deal_card_from_shoe(box.hand)
 
     def check_dealer_balance(self):
         # reset dealer balance
