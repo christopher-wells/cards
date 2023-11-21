@@ -107,7 +107,7 @@ class BlackjackGame:
             else:
                 # avoid None type in cards
                 box.hand = Hand()
-                box.hand.card = 0
+                box.hand.cards = 0
         # dealer card
         self.dealer.active_hand = Hand()
         self.shoe.deal_card_from_shoe(self.dealer.active_hand)
