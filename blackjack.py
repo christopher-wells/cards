@@ -81,7 +81,7 @@ class BlackjackGame:
             for box in range(self.max_boxes)
         ]
 
-    def finalise_wager_to_box(self, player, amount, box_number):
+    def try_wager_on_box(self, player, amount, box_number):
         # check if box is free first
         if not self.boxes[box_number].active:
             self.boxes[box_number].active = True
