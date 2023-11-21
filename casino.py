@@ -24,11 +24,17 @@ class Box:
     def __init__(self, max_wagers=0, max_bet=0) -> None:
         self.max_wagers = max_wagers
         self.max_bet = max_bet
+
         self.wagers = []
+
         self.active = False
         self.action = False
+
         self.hand = None
         self.invalid_bet = False
+
+    def __str__(self) -> str:
+        return f"A box containing {len(self.wagers)} wagers."
 
     def calculate_if_max_bet_exceeded(self) -> bool:
         box_total = 0
@@ -57,14 +63,15 @@ class Player:
     The Player class. Can add Wagers to different Boxes and play Games.
     If auto_player then will follow one or more strategies to play Games.
     """
+
     def __init__(self, name, auto_player=False) -> None:
         self.name = name
-        self.balance = 1000
+        self.balance = 10000
         self.auto_player = auto_player
 
         self.active_wagers = []
         self.previous_wager = 0
-        
+
         self.active_boxes = []
         self.active_hands = []
 
@@ -77,12 +84,15 @@ class Dealer:
     The Dealer class. Will follow pre-defined rules for the Games and pay or
     take the Wagers.
     """
+
     def __init__(self) -> None:
         self.balance = 100000000
         self.active_hand = None
+
 
 class Manager:
     """
     Does nothing.
     """
+
     pass

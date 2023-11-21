@@ -69,3 +69,20 @@ class BlackjackGame:
         self.number_of_decks = Shoe(number_of_decks)
         self.player = Player("Pope Gregory IX")
         self.dealer = Dealer()
+
+        self.max_boxes = 7
+        self.max_wagers_per_box = 3
+        self.max_bet_per_box = 5000
+
+        self.boxes = [
+            Box(max_wagers=self.max_wagers_per_box, max_bet=self.max_bet_per_box)
+            for box in range(self.max_boxes)
+        ]
+
+    def check_dealer_balance(self):
+        # reset dealer balance
+        if self.dealer.balance < 0:
+            print("A change of dealer will begin now.")
+            self.dealer = Dealer()
+        else:
+            pass
