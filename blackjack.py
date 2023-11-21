@@ -98,6 +98,9 @@ class BlackjackGame:
             else:
                 raise InvalidBetError("The bet was invalid.")
 
+    def start_deal(self):
+        pass
+
     def check_dealer_balance(self):
         # reset dealer balance
         if self.dealer.balance < 0:

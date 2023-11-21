@@ -37,7 +37,7 @@ class TestBlackjackGame(unittest.TestCase):
         mock_hand.cards = []
 
         self.mock_shoe.deal_card_from_shoe = MagicMock(return_value=None)
-    
+
     def test_try_wager_on_box_valid_wager(self):
         player = Player("John")
         amount = 50

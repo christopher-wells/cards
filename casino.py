@@ -51,10 +51,9 @@ class Wager:
         else:
             self.amount = 1
         self.owner = owner
-    
-    def __str__(self) -> str:
-        return f"A Wager of £{self.amount}."
 
+    def __str__(self) -> str:
+        return f"{self.owner}'s Wager of £{self.amount}."
 
 
 class Player:
