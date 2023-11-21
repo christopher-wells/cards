@@ -38,17 +38,6 @@ class Box:
     def __str__(self) -> str:
         return f"A box containing {len(self.wagers)} wagers."
 
-    def calculate_if_max_bet_exceeded(self) -> bool:
-        box_total = 0
-        for wager in self.wagers:
-            box_total += wager.total
-        if box_total > self.max_bet:
-            self.invalid_bet = True
-            return self.invalid_bet
-        else:
-            self.invalid_bet = False
-            return self.invalid_bet
-
 
 class Wager:
     """
@@ -62,6 +51,7 @@ class Wager:
         else:
             self.amount = 1
         self.owner = owner
+
 
 
 class Player:
