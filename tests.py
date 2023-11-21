@@ -7,6 +7,82 @@ from cards import Card, Deck, Shoe
 from error_handling import InvalidBetError
 
 
+import unittest
+
+class TestCard(unittest.TestCase):
+
+    def test_card_creation(self):
+        card = Card("♥", "A", (1, 11))
+        self.assertEqual(card.suit, "♥")
+        self.assertEqual(card.name, "A")
+        self.assertEqual(card.value, (1, 11))
+
+    def test_card_string_representation(self):
+        card = Card("♠", "10", 10)
+        self.assertEqual(str(card), "10♠ - 10.")
+
+
+class TestDeck(unittest.TestCase):
+
+    def test_deck_creation(self):
+        deck = Deck()
+        self.assertEqual(len(deck.cards), 52)
+
+    def test_shuffle_deck(self):
+        deck = Deck()
+        original_order = list(deck.cards)
+        deck.shuffle_deck()
+        shuffled_order = deck.cards
+        # assert that the order has changed
+        self.assertNotEqual(original_order, shuffled_order)
+
+    def test_print_deck(self):
+        # redirect standard output to capture printed content
+        from io import StringIO
+        import sys
+        captured_output = StringIO()
+        sys.stdout = captured_output
+
+        deck = Deck()
+        deck.print_deck()
+
+        # reset redirect.
+        sys.stdout = sys.__stdout__
+        printed_content = captured_output.getvalue().strip()
+        self.assertTrue(len(printed_content) > 0)
+
+
+class TestShoe(unittest.TestCase):
+
+    def test_shoe_creation_default_deck_total(self):
+        shoe = Shoe()
+        self.assertEqual(shoe.deck_total, 1)
+
+    def test_shoe_creation_custom_deck_total(self):
+        shoe = Shoe(deck_total=3)
+        self.assertEqual(shoe.deck_total, 3)
+
+    def test_shuffle_cards_in_shoe(self):
+        shoe = Shoe()
+        shoe.shuffle_new_decks_into_shoe()
+        # ensure the cards are still present
+        self.assertEqual(len(shoe.cards), 52)
+
+    def test_deal_card_from_shoe(self):
+        shoe = Shoe()
+        shoe.shuffle_new_decks_into_shoe()
+        hand = Hand()  # assume you have a Hand class
+        shoe.deal_card_from_shoe(hand)
+        self.assertEqual(len(hand.cards), 1)
+        self.assertEqual(len(shoe.cards), 51)
+
+    def test_shuffle_new_decks_into_shoe(self):
+        shoe = Shoe(deck_total=2)
+        shoe.shuffle_new_decks_into_shoe()
+        # check if cards from two decks are present
+        self.assertEqual(len(shoe.cards), 104)
+
+
 class TestBlackjackGame(unittest.TestCase):
     def setUp(self):
         self.mock_shoe = MagicMock(spec=Shoe)

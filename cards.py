@@ -56,7 +56,7 @@ class Shoe:
         else:
             self.deck_total = deck_total
         self.decks = None
-        self.cards = None
+        self.cards = []
         # card count for keeping track of when a new shuffle will take place
         self.card_count = 0
 
