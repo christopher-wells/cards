@@ -53,16 +53,36 @@ class Wager:
 
 
 class Player:
-    def __init__(self, name) -> None:
+    """
+    The Player class. Can add Wagers to different Boxes and play Games.
+    If auto_player then will follow one or more strategies to play Games.
+    """
+    def __init__(self, name, auto_player=False) -> None:
         self.name = name
         self.balance = 1000
+        self.auto_player = auto_player
+
         self.active_wagers = []
         self.previous_wager = 0
+        
+        self.active_boxes = []
+        self.active_hands = []
 
     def __str__(self) -> str:
         return f"{self.name} has £{self.balance} left."
 
 
 class Dealer:
+    """
+    The Dealer class. Will follow pre-defined rules for the Games and pay or
+    take the Wagers.
+    """
     def __init__(self) -> None:
         self.balance = 100000000
+        self.active_hand = None
+
+class Manager:
+    """
+    Does nothing.
+    """
+    pass

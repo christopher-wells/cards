@@ -76,7 +76,7 @@ class Shoe:
         # add the Card to the Hand and then remove from Deck
         hand.cards.append(self.cards[0])
         self.cards.pop(0)
-    
+
     def shuffle_new_decks_into_shoe(self):
         # generate new decks for deck_total
         self.decks = [Deck() for deck in range(self.deck_total)]

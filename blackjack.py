@@ -67,6 +67,5 @@ class BlackjackGame:
 
     def __init__(self, number_of_decks) -> None:
         self.number_of_decks = Shoe(number_of_decks)
-        self.player = Player()
+        self.player = Player("Pope Gregory IX")
         self.dealer = Dealer()
-        self.first_box = Box()
