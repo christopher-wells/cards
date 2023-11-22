@@ -69,7 +69,7 @@ class BlackjackGame:
 
     def __init__(self, number_of_decks) -> None:
         self.shoe = Shoe(number_of_decks)
-        self.player = Player("Pope Gregory IX")
+        self.player = Player()
         self.dealer = Dealer()
 
         self.max_boxes = 7
@@ -115,6 +115,21 @@ class BlackjackGame:
         for box in self.boxes:
             if box.active:
                 self.shoe.deal_card_from_shoe(box.hand)
+
+    def set_box_action(self):
+        # find active boxes and mark as needing action
+        for box in self.boxes:
+            if box.active:
+                box.action = True
+            else:
+                pass
+
+    def get_actions(self):
+        for box in self.boxes:
+            if box.action:
+                pass
+            else:
+                pass
 
     def check_dealer_balance(self):
         # reset dealer balance

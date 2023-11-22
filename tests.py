@@ -168,6 +168,43 @@ class TestBlackjackGame(unittest.TestCase):
         # assuming the dealer receives one card initially
         self.assertEqual(len(self.game.dealer.active_hand.cards), 1)
 
+    def test_set_box_action(self):
+        self.game.shoe.shuffle_new_decks_into_shoe()
+        # call the initial_deal method
+        self.game.initial_deal()
+
+        # call set_box_action method
+        self.game.set_box_action()
+
+        # check that all active boxes are marked for action
+        for box in self.game.boxes:
+            if box.active:
+                self.assertTrue(box.action)
+            else:
+                # inactive boxes should not be marked for action
+                self.assertFalse(box.action)
+
+    def test_get_actions_no_actions(self):
+        self.game.shoe.shuffle_new_decks_into_shoe()
+        # call the initial_deal method
+        self.game.initial_deal()
+
+        # call get_actions method
+        actions = self.game.get_actions()
+
+    def test_get_actions_with_actions(self):
+        self.game.shoe.shuffle_new_decks_into_shoe()
+        # call the initial_deal method
+        self.game.initial_deal()
+
+        # mark some boxes for action
+        self.game.boxes[0].active = True
+        self.game.boxes[1].active = True
+        self.game.set_box_action()
+
+        # call get_actions method
+        actions = self.game.get_actions()
+
 
 if __name__ == "__main__":
     unittest.main()
