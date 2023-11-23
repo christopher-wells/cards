@@ -122,6 +122,7 @@ class BlackjackGame:
             if box.active:
                 box.action = True
             else:
+                # inactive box - no action needed
                 pass
 
     def get_actions(self):
