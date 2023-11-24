@@ -87,15 +87,3 @@ class Shoe:
                 self.cards.append(card[0])
         # initial shuffle
         self.shuffle_cards()
-
-
-class DiscardHolder:
-    """
-    All previous cards from a blackjack Hand will go here.
-    The shuffle will be done from these cards at the end of the shoe.
-    """
-    def __init__(self) -> None:
-        self.cards =[]
-    
-    def __str__(self) -> str:
-        return f"A Discard pile containing {len(self.cards)} cards."

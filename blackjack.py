@@ -1,4 +1,4 @@
-from casino import Player, Dealer, Box, Wager, Hand
+from casino import Player, Dealer, Box, Wager, Hand, DiscardHolder
 from cards import Card, Deck, Shoe
 from error_handling import InvalidBetError
 
@@ -71,6 +71,7 @@ class BlackjackGame:
         self.shoe = Shoe(number_of_decks)
         self.player = Player()
         self.dealer = Dealer()
+        self.discard = DiscardHolder()
 
         self.max_boxes = 7
         self.max_wagers_per_box = 1

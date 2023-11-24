@@ -1,3 +1,16 @@
+class DiscardHolder:
+    """
+    All previous cards from a blackjack Hand will go here.
+    The shuffle will be done from these cards at the end of the shoe.
+    """
+
+    def __init__(self) -> None:
+        self.cards = []
+
+    def __str__(self) -> str:
+        return f"A Discard pile containing {len(self.cards)} cards."
+
+
 class Hand:
     """
     A Hand consists of a number of Cards. The Cards can have a total.
@@ -7,11 +20,19 @@ class Hand:
         self.cards = []
         self.total = 0
 
+    def __str__(self) -> str:
+        return f"A hand containing {len(self.cards)} cards."
+
     def calculate_hand_total(self, cards) -> int:
         self.total = 0
         for card in self.cards:
             self.total += card.value
         return self.total
+
+    def return_cards_to_discard_holder(self, discard_holder) -> None:
+        for card in self.cards:
+            discard_holder.cards.append(card)
+            self.cards.remove(card)
 
 
 class Box:
